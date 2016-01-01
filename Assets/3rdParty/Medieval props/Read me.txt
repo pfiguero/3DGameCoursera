@@ -1,0 +1,34 @@
+This pack is ideal for interior your own medieval house. 
+Materials contain diffuse map, normal map, height map and occlusion map in high quality. 
+Resolution are 512x512, 1024x1024, 2048x2048 it depends on object. 
+The collection includes: 40 props prefabs. 
+Packege include only 3D models and textures.
+
+Prefabs:
+- Mugs (2x)
+- Tables (3x)
+- Chairs (3x)
+- Shelf
+- Bed
+- Pots (3x)
+- Plate (2x)
+- Vase 
+- Bathtub
+- Lanterns (3x)
+- Candles (2x)
+- Bag
+- Books (2x)
+- Box
+- Pile of wood (2x)
+- Locker (3x)
+- Embers
+- Spoon (2x)
+- Knife 
+- Beer`s barrel
+- Bench
+- Bottle (2x)
+- Fire place
+
+In FBX folder are original 3D models.
+
+If you have question you can contact me on : boborlukas@gmail.com
