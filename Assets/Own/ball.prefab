@@ -12,6 +12,8 @@ GameObject:
   - 23: {fileID: 2312636}
   - 54: {fileID: 5405682}
   - 135: {fileID: 13514356}
+  - 114: {fileID: 11426866}
+  - 114: {fileID: 11487362}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195142}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 1534.87, y: 143.51, z: 1374.96}
+  m_LocalPosition: {x: 1534.87, y: 143.8, z: 1374.67}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,6 +81,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11426866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371c66cef58a547d5ac765e8577d80ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiempoSubir: 5
+  tiempoRotar: 3
+--- !u!114 &11487362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bbc4204aaca4087a90c0a195ac8885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13514356
 SphereCollider:
   m_ObjectHideFlags: 1
