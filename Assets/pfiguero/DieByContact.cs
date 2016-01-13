@@ -3,6 +3,9 @@ using System.Collections;
 
 public class DieByContact : MonoBehaviour {
 
+	public delegate void DyingAction();
+	public static event DyingAction OnDying;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,6 +13,8 @@ public class DieByContact : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name.Contains ("Die")) {
 			Destroy (gameObject);
+			if (OnDying != null)
+				OnDying ();
 		}
 	}
 

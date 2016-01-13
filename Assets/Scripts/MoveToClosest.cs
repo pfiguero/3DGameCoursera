@@ -35,13 +35,17 @@ public class MoveToClosest : MonoBehaviour {
 
 	void FixedUpdate() {
 		if (fracComplete >= 1.0f) {
-			rgb.velocity = Vector3.zero;
-			rgb.angularVelocity = Vector3.zero;
-			rgb.drag = 0f;
-			rgb.inertiaTensorRotation = Quaternion.identity;
-			rgb.ResetInertiaTensor ();
+			ResetRigidbody ();
 			enabled = false;
 		}
+	}
+
+	void ResetRigidbody() {
+		rgb.velocity = Vector3.zero;
+		rgb.angularVelocity = Vector3.zero;
+		rgb.drag = 0f;
+		rgb.inertiaTensorRotation = Quaternion.identity;
+		rgb.ResetInertiaTensor ();
 	}
 
 	// Update is called once per frame
