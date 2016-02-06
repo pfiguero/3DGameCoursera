@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/testTerrainAndCharacter.unity
+    path: Assets/Scenes/pantallaIntro.unity
   - enabled: 1
-    path: Assets/Scenes/room-pfiguero.unity
+    path: Assets/Scenes/testTerrainAndCharacter.unity
