@@ -11,30 +11,53 @@ public class BallController : MonoBehaviour {
 
 	public GameObject generadorRampa;
 
+	public float tDespuesOlla = 5f;
+
 	private Rigidbody rgb;
+	private SphereCollider col;
+	private Material m;
+	private bool floatingToGeneradorRampa = false;
+	private float tIni;
+	Vector3 pIni;
 
 	// Use this for initialization
 	void Start () {
 		rgb = GetComponent<Rigidbody> ();
+		col = GetComponent<SphereCollider> ();
+		m = GetComponent<Renderer>().material;
 		generadorRampa = GameObject.Find ("GeneradorRampa");
 	}
 
 	// Update is called once per frame
 	void Update () {
-	
+		if (floatingToGeneradorRampa) {
+			float t = (Time.time - tIni) / tDespuesOlla;
+			if (t < 1f) {
+				Vector3 p = Vector3.Lerp (pIni, generadorRampa.transform.position, t);
+				transform.position = p;
+			} else {
+				floatingToGeneradorRampa = false;
+				MakeGhost ( false );
+				ResetRigidbody ();
+			}
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.name.Contains ("FondoOlla")) {
-			gameObject.transform.position = generadorRampa.transform.position;
-			ResetRigidbody ();
+		if (other.gameObject.name.Contains ("FondoOlla") && !floatingToGeneradorRampa) {
+			//ResetRigidbody ();
+			MakeGhost ( true );
+			floatingToGeneradorRampa = true;
+			tIni = Time.time;
+			pIni = transform.position;
+			//gameObject.transform.position = generadorRampa.transform.position;
 			if (OnFondoOlla != null)
 				OnFondoOlla ();
 		}
 		if (other.gameObject.name.Contains ("phonograph")) {
-			Destroy (gameObject);
 			if (OnBolaDestruida != null)
 				OnBolaDestruida ();
+			Destroy (gameObject);
 		}
 	}
 
@@ -46,4 +69,19 @@ public class BallController : MonoBehaviour {
 		rgb.ResetInertiaTensor ();
 	}
 
+	void MakeGhost( bool state ) {
+		if (state) {
+			rgb.isKinematic = true;
+			col.enabled = false;
+			Color c = m.color;
+			c.a = 30 / 256f;
+			m.color = c;
+		} else {
+			rgb.isKinematic = false;
+			col.enabled = true;
+			Color c = m.color;
+			c.a = 1f;
+			m.color = c;
+		}
+	}
 }
