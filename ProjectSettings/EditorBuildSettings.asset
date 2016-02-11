@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/pantallaIntro.unity
   - enabled: 1
     path: Assets/Scenes/testTerrainAndCharacter.unity
+  - enabled: 1
+    path: Assets/Scenes/room-pfiguero.unity
