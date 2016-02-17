@@ -18,6 +18,7 @@ public class CambioCuadro : MonoBehaviour {
 	void Start () {
 		if (cuadro != null) {
 			m = cuadro.GetComponent<Renderer>().material;
+			m.SetFloat ("_slideTex", 0);
 		}
 	}
 

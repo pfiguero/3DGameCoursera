@@ -9,10 +9,20 @@ public class ControlFonografo : MonoBehaviour {
 	public float deltaPitch = .05f;
 	private float minPitch = .2f;
 	private float curPitch = 1f;
+	private AudioSource source;
+
+	private GameManager gameManager=null;
 
 	// Use this for initialization
 	void Start () {
+		source = GetComponent<AudioSource> ();
 		Invoke ("DecreasePitch", timeoutBola);
+		GameObject g = GameObject.Find ("GameManager");
+		if (g != null) {
+			gameManager = g.GetComponent<GameManager> ();
+			curPitch = gameManager.pitch;
+			source.time = gameManager.offsetSong;
+		}
 	}
 	
 	// Update is called once per frame

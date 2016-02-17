@@ -454,7 +454,7 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: 2f84f4a3-e25c-4984-9543-8cbeb3e708d9
+  projectName: 3DGameCoursera
+  organizationId: pfiguero
   cloudEnabled: 0
