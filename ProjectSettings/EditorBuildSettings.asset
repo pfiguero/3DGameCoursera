@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/pantallaIntro.unity
   - enabled: 1
-    path: Assets/Scenes/testTerrainAndCharacter.unity
+    path: Assets/Scenes/principal.unity
   - enabled: 1
     path: Assets/Scenes/room-pfiguero.unity
