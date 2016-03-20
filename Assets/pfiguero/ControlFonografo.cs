@@ -15,8 +15,7 @@ public class ControlFonografo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		source = GetComponent<AudioSource> ();
-		Invoke ("DecreasePitch", timeoutBola);
+		source = GetComponent<AudioSource> (); // first audio source
 		GameObject g = GameObject.Find ("GameManager");
 		if (g != null) {
 			gameManager = g.GetComponent<GameManager> ();
@@ -36,7 +35,9 @@ public class ControlFonografo : MonoBehaviour {
 			curPitch = 1f;
 			audioMixer.SetFloat ("pitch", curPitch);
 		}
-		Invoke ("DecreasePitch", timeoutBola);
+		if (gameManager.yaHuboEarthquake) {
+			Invoke ("DecreasePitch", timeoutBola);
+		}
 	}
 
 	void DecreasePitch() {
@@ -57,6 +58,7 @@ public class ControlFonografo : MonoBehaviour {
 
 	void OnDisable()
 	{
+		gameManager.offsetSong = source.time;
 		BallController.OnBolaDestruida -= BolaDestruida;
 	}
 }

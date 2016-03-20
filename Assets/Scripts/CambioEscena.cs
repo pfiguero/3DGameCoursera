@@ -4,17 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class CambioEscena : MonoBehaviour {
 
-	private GameManager gameManager;
-	private AudioSource sonidoCasaPfiguero1;
+	public string nombreEscena;
+
+	public delegate void CerrarEscena();
+	public static event CerrarEscena OnCerrarEscena;
 
 	// Use this for initialization
 	void Start () {
-		GameObject g = GameObject.Find ("GameManager");
-		if (g != null)
-			gameManager = g.GetComponent<GameManager> ();
-		g = GameObject.Find ("casaPfiguero1");
-		if (g != null)
-			sonidoCasaPfiguero1 = g.GetComponent<AudioSource> ();
+		if (nombreEscena == null) {
+			Debug.Log ("CambioEscena. No se ha asignado una escena destino. Suponiendo pfiguero");
+			nombreEscena = "room-pfiguero";
+		}
 	}
 	
 	// Update is called once per frame
@@ -33,8 +33,10 @@ public class CambioEscena : MonoBehaviour {
 	}
 
 	void Cambiar () {
-		gameManager.offsetSong = sonidoCasaPfiguero1.time;
-		SceneManager.LoadScene ("room-pfiguero");
+		if (OnCerrarEscena != null ) {
+			OnCerrarEscena ();
+		}
+		SceneManager.LoadScene (nombreEscena);
 	}
 
 }

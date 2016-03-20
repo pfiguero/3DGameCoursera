@@ -8,9 +8,8 @@ public class GameManager : MonoBehaviour {
     public bool empezarTiempo;
     public float tiempo;
 
-	public bool yaHuboEarthquake = false;
-
 	// general
+	public bool yaHuboEarthquake = false;
 	public float tiempoEarthquake = 180f;
 
 	// para pfiguero-Escenario
