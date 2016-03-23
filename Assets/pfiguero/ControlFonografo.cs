@@ -21,6 +21,9 @@ public class ControlFonografo : MonoBehaviour {
 			gameManager = g.GetComponent<GameManager> ();
 			curPitch = gameManager.pitch;
 			source.time = gameManager.offsetSong;
+			if (gameManager.yaHuboEarthquake) {
+				Invoke ("DecreasePitch", timeoutBola);
+			}
 		}
 	}
 	
