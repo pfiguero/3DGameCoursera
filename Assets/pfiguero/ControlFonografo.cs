@@ -15,6 +15,7 @@ public class ControlFonografo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameManager = new GameManager();
 		source = GetComponent<AudioSource> (); // first audio source
 		GameObject g = GameObject.Find ("GameManager");
 		if (g != null) {

@@ -11,6 +11,7 @@ public class ControlEscenaPfiguero : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameManager = new GameManager();
 		bed = GameObject.Find ("bed");
 		phonographLocker = GameObject.Find ("phonographLocker");
 
