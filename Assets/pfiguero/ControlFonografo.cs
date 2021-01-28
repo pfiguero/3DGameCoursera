@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.Audio;
 
-public class ControlFonografo : MonoBehaviour {
+public class ControlFonografo : MonoBehaviour
+{
 
 	public AudioMixer audioMixer;
 	public float timeoutBola = 8f;
@@ -11,47 +12,55 @@ public class ControlFonografo : MonoBehaviour {
 	private float curPitch = 1f;
 	private AudioSource source;
 
-	private GameManager gameManager=null;
+	private GameManager gameManager = null;
 
 	// Use this for initialization
-	void Start () {
-		gameManager = new GameManager();
-		source = GetComponent<AudioSource> (); // first audio source
-		GameObject g = GameObject.Find ("GameManager");
-		if (g != null) {
-			gameManager = g.GetComponent<GameManager> ();
+	void Start()
+	{
+		source = GetComponent<AudioSource>(); // first audio source
+		GameObject g = GameObject.Find("GameManager");
+		if (g != null)
+		{
+			gameManager = g.GetComponent<GameManager>();
 			curPitch = gameManager.pitch;
 			source.time = gameManager.offsetSong;
-			if (gameManager.yaHuboEarthquake) {
-				Invoke ("DecreasePitch", timeoutBola);
+			if (gameManager.yaHuboEarthquake)
+			{
+				Invoke("DecreasePitch", timeoutBola);
 			}
 		}
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-	
+	void Update()
+	{
+
 	}
 
-	public void BolaDestruida() {
-		CancelInvoke ();
-		if (audioMixer != null) {
+	public void BolaDestruida()
+	{
+		CancelInvoke();
+		if (audioMixer != null)
+		{
 			curPitch = 1f;
-			audioMixer.SetFloat ("pitch", curPitch);
+			audioMixer.SetFloat("pitch", curPitch);
 		}
-		if (gameManager.yaHuboEarthquake) {
-			Invoke ("DecreasePitch", timeoutBola);
+		if (gameManager.yaHuboEarthquake)
+		{
+			Invoke("DecreasePitch", timeoutBola);
 		}
 	}
 
-	void DecreasePitch() {
-		Debug.Log ("Bajando pitch: " + curPitch);
+	void DecreasePitch()
+	{
+		Debug.Log("Bajando pitch: " + curPitch);
 		if (curPitch >= minPitch)
 			curPitch -= deltaPitch;
-		if (audioMixer != null) {
-			audioMixer.SetFloat ("pitch", curPitch);
+		if (audioMixer != null)
+		{
+			audioMixer.SetFloat("pitch", curPitch);
 		}
-		Invoke ("DecreasePitch", timeoutBola);
+		Invoke("DecreasePitch", timeoutBola);
 	}
 
 	void OnEnable()
@@ -62,7 +71,13 @@ public class ControlFonografo : MonoBehaviour {
 
 	void OnDisable()
 	{
-		gameManager.offsetSong = source.time;
-		BallController.OnBolaDestruida -= BolaDestruida;
+		GameObject g = GameObject.Find("GameManager");
+		if (g != null)
+		{
+			gameManager = g.GetComponent<GameManager>();
+			gameManager.offsetSong = source.time;
+			BallController.OnBolaDestruida -= BolaDestruida;
+		}
+		
 	}
 }
